@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">My Application</string>
+    <string name="register">Don\'t have an account? Register</string>
+    <string name="signup">Not yet registered? SignUp Now</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="signuptitle">Sign Up</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="Upload">Upload</string>
+    <string name="namapasien">Masukkan Nama Pasien</string>
+    <string name="usia">Masukkan Usia Pasien</string>
+    <string name="next">Continue</string>
+</resources>

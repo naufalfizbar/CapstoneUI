@@ -1,4 +1,5 @@
-package com.example.myapplication.welcome
+package com.example.myapplication.ui.welcome
+
 
 import android.content.Intent
 import android.os.Build
@@ -7,8 +8,8 @@ import android.view.WindowInsets
 import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.myapplication.databinding.ActivityWelcomeBinding
-import com.example.myapplication.login.LoginActivity
-import com.example.myapplication.register.RegisterActivity
+import com.example.myapplication.ui.login.LoginActivity
+import com.example.myapplication.ui.register.RegisterActivity
 
 class WelcomeActivity : AppCompatActivity() {
 

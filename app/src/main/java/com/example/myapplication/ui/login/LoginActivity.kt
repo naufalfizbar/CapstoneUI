@@ -1,19 +1,23 @@
-package com.example.myapplication.login
+package com.example.myapplication.ui.login
 
 import android.content.Intent
-import android.net.http.HttpException
 import android.os.Build
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
 import android.view.WindowInsets
 import android.view.WindowManager
 import android.widget.Toast
+import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.R
+import com.example.myapplication.ViewModelFactory
 import com.example.myapplication.databinding.ActivityLoginBinding
-import com.example.myapplication.main.MainActivity
+import com.example.myapplication.ui.main.MainActivity
+import com.example.myapplication.preference.UserModel
+import com.example.myapplication.response.LoginResponse
+import com.example.myapplication.retrofit.ApiConfig
+import com.google.gson.Gson
 import kotlinx.coroutines.launch
 
 class LoginActivity : AppCompatActivity() {
@@ -47,8 +51,8 @@ class LoginActivity : AppCompatActivity() {
 
     private fun setupAction() {
         binding.btLogin.setOnClickListener {
-            showLoading(true)
-            val email = binding.edtUsername.text.toString()
+            //showLoading(true)
+            val email = binding.edtEmail.text.toString()
             val password = binding.edtPassword.text.toString()
 
             lifecycleScope.launch {
@@ -73,11 +77,14 @@ class LoginActivity : AppCompatActivity() {
                         show()
                     }
 
-                } catch (e: HttpException) {
+                } catch (e: retrofit2.HttpException) {
                     val errorBody = e.response()?.errorBody()?.string()
-                    val errorResponse = Gson().fromJson(errorBody, LoginResponse::class.java)
-                    showToast(errorResponse.message)
-//                    showLoading(false)
+                    if (!errorBody.isNullOrEmpty()) {
+                        val errorResponse = Gson().fromJson(errorBody, LoginResponse::class.java)
+                        showToast(errorResponse.message)
+                    } else {
+                        showToast("Unknown error occurred")
+                    }
                 }
             }
 

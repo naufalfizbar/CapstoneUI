@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:gravity="center"
     android:background="@drawable/img_2"
-    tools:context=".login.LoginActivity">
+    tools:context=".ui.login.LoginActivity">
 
 
     <androidx.cardview.widget.CardView
@@ -37,17 +37,17 @@
                 android:textSize="36sp"
                 android:textStyle="bold" />
 
-            <EditText
-                android:id="@+id/edt_username"
+            <com.example.myapplication.edtemail.EdTextEmail
+                android:id="@+id/edt_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:drawableLeft="@drawable/ic_username"
-                android:background="@drawable/custom_edtext"
-                android:hint="Username"
                 android:layout_marginTop="30dp"
+                android:background="@drawable/custom_edtext"
+                android:drawableLeft="@drawable/ic_username"
+                android:hint="Email"
                 android:padding="16dp" />
 
-            <EditText
+            <com.example.myapplication.edtemail.EdTextPassword
                 android:id="@+id/edt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -72,16 +72,6 @@
 
     </androidx.cardview.widget.CardView>
 
-    <TextView
-        android:id="@+id/signupText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="20dp"
-        android:padding="8dp"
-        android:text="@string/signup"
-        android:textAlignment="center"
-        android:textColor="@color/blue2"
-        android:textSize="14sp" />
 
 
 </LinearLayout>

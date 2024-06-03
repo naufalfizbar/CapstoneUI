@@ -1,4 +1,4 @@
-package com.example.myapplication.camera
+package com.example.myapplication.ui.add_image
 
 import android.Manifest
 import android.content.ContentValues
@@ -13,20 +13,26 @@ import android.view.View
 import android.widget.Toast
 import androidx.activity.result.PickVisualMediaRequest
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.ContextCompat.startActivity
 import androidx.lifecycle.lifecycleScope
 import com.example.myapplication.R
+import com.example.myapplication.ViewModelFactory
 import com.example.myapplication.databinding.ActivityScanBinding
-import com.example.myapplication.main.MainActivity
-import com.example.myapplication.welcome.WelcomeActivity
+import com.example.myapplication.ui.main.MainActivity
+import com.example.myapplication.retrofit.ApiConfig
+import com.example.myapplication.ui.welcome.WelcomeActivity
+import com.google.gson.Gson
 import kotlinx.coroutines.launch
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.MultipartBody
 
 class ScanActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityScanBinding
-    private val viewModel by viewModels<//ScanViewModel> {
+    private val viewModel by viewModels<ScanViewModel> {
         ViewModelFactory.getInstance(this) //belon ada
     }
     private var token = "token"
@@ -49,9 +55,8 @@ class ScanActivity : AppCompatActivity() {
                 finish()
             } else {
                 token = user.token
-                binding.bt.setOnClickListener { startGallery() }
-                binding.cameraButton.setOnClickListener { startCamera() }
-                binding.uploadButton.setOnClickListener { uploadImage() }
+                binding.btGallery.setOnClickListener { startGallery() }
+                binding.btUpload.setOnClickListener { uploadImage() }
             }
         }
     }
@@ -91,7 +96,7 @@ class ScanActivity : AppCompatActivity() {
     private fun showImage() {
         currentImageUri?.let {
             Log.d("Image URI", "showImage: $it")
-            binding.prevImage.setImageURI(it)
+            binding.previewparu.setImageURI(it)
         }
     }
 
@@ -101,18 +106,7 @@ class ScanActivity : AppCompatActivity() {
             REQUIRED_PERMISSION
         ) == PackageManager.PERMISSION_GRANTED
 
-    private fun startCamera() {
-        currentImageUri = getImageUri(this)
-        launcherIntentCamera.launch(currentImageUri)
-    }
 
-    private val launcherIntentCamera = registerForActivityResult(
-        ActivityResultContracts.TakePicture()
-    ) { isSuccess ->
-        if (isSuccess) {
-            showImage()
-        }
-    }
 
     private fun uploadImage() {
         currentImageUri?.let { uri ->

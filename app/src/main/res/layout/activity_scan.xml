@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".camera.ScanActivity">
+    tools:context=".ui.add_image.ScanActivity">
 
     <ImageView
         android:id="@+id/previewparu"
@@ -17,48 +17,34 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:src="@tools:sample/avatars" />
 
-    <Button
-        android:id="@+id/cameraButton"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/blue2"
-        android:text="@string/camera"
-        app:cornerRadius="4dp"
-        app:layout_constraintBottom_toBottomOf="@+id/uploadButton"
-        app:layout_constraintEnd_toStartOf="@+id/uploadButton"
-        app:layout_constraintHorizontal_bias="0.36"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/uploadButton"
-        app:layout_constraintVertical_bias="0.0" />
 
     <Button
-        android:id="@+id/uploadButton"
-        android:layout_width="150dp"
+        android:id="@+id/bt_gallery"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="204dp"
-        android:layout_marginEnd="36dp"
         android:backgroundTint="@color/blue2"
         android:elevation="2dp"
         android:scaleType="fitCenter"
         android:text="@string/gallery"
         app:cornerRadius="4dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/previewparu" />
 
     <Button
-        android:id="@+id/galleryButton"
+        android:id="@+id/bt_upload"
         android:layout_width="350dp"
         android:layout_height="60dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="36dp"
         android:backgroundTint="@color/blue2"
         android:elevation="2dp"
         android:scaleType="fitCenter"
         android:text="@string/Upload"
         app:cornerRadius="4dp"
-        app:layout_constraintEnd_toEndOf="@+id/uploadButton"
-        app:layout_constraintHorizontal_bias="0.909"
-        app:layout_constraintStart_toStartOf="@+id/cameraButton"
-        app:layout_constraintTop_toBottomOf="@+id/uploadButton" />
+        app:layout_constraintEnd_toEndOf="@+id/bt_gallery"
+        app:layout_constraintStart_toStartOf="@+id/bt_gallery"
+        app:layout_constraintTop_toBottomOf="@+id/bt_gallery" />
 
     <TextView
         android:id="@+id/textView"

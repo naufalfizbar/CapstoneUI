@@ -28,7 +28,8 @@
         <activity
             android:name=".ui.login.LoginActivity"
             android:exported="false" />
-        <activity android:name=".ui.profil.ProfileFragment"
+        <activity
+            android:name=".ui.profil.ProfileFragment"
             android:exported="false" />
         <activity android:name=".ui.profil.EditActivity"
             android:exported="false" />

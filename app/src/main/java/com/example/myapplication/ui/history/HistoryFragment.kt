@@ -1,4 +1,4 @@
-package com.dicoding.pneumuvision.ui.history
+package com.example.myapplication.ui.history
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,14 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.dicoding.pneumuvision.R
 import com.dicoding.pneumuvision.adapter.ListHistoryAdapter
-import com.dicoding.pneumuvision.response.Lungs
+import com.dicoding.pneumuvision.response.LungsResponse
+import com.example.myapplication.R
 
 class HistoryFragment : Fragment() {
 
     private lateinit var rvLungs: RecyclerView
-    private val list = ArrayList<Lungs>()
+    private val list = ArrayList<LungsResponse>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,13 +32,13 @@ class HistoryFragment : Fragment() {
         return view
     }
 
-    private fun getListAnimal(): ArrayList<Lungs> {
+    private fun getListAnimal(): ArrayList<LungsResponse> {
         val dataName = resources.getStringArray(R.array.data_name)
         val dataDescription = resources.getStringArray(R.array.data_description)
         val dataPhoto = resources.obtainTypedArray(R.array.data_photo)
-        val listAnimal = ArrayList<Lungs>()
+        val listAnimal = ArrayList<LungsResponse>()
         for (i in dataName.indices) {
-            val animal = Lungs(dataName[i], dataDescription[i], dataPhoto.getResourceId(i, -1))
+            val animal = LungsResponse(dataName[i], dataDescription[i], dataPhoto.getResourceId(i, -1))
             listAnimal.add(animal)
         }
         return listAnimal
